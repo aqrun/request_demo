@@ -98,7 +98,7 @@ Sweet! Now let's use that to make a [Request](https://hyper.rs/hyper/master/hype
 
 It takes a `Method`, an enum representing all the different types of requests you can make like GET, POST, PUT, DELETE, PATCH, etc., and a `Url`. You have access to the handle and headers from this struct via function calls so that you can change aspects of it that you want to change. Alright let's get our [Mime](https://hyper.rs/mime.rs/mime/struct.Mime.html) value and authorization token setup for the headers
 
-它接受一个`类型Method`，就是一个枚举代表你可以做的所有不同类型的请求，如GET，POST，PUT，DELETE，PATCH等，和一个`Url`。 你可以通过函数调用来访问这个结构中的句柄和头文件，这样你就可以修改它。 很好，让我们来为我们的头文件设置我们的[Mime](https://hyper.rs/mime.rs/mime/struct.Mime.html)值和授权token
+它接受一个`类型Method`，就是一个枚举代表你可以做的所有不同类型的请求，如GET，POST，PUT，DELETE，PATCH等，和一个`Url`。 你可以通过函数调用来访问这个结构中的句柄和头文件，这样你就可以修改它。 很好，让我们来为我们的头文件设置我们的[Mime](https://hyper.rs/mime.rs/mime/struct.Mime.html)值和授权token
 
 ```rust
     let mime: Mime = "application/vnd.github.v3+json".parse().unwrap();
@@ -111,7 +111,7 @@ Why is this media type (`Mime`) needed? Well if you look at the [GitHub docs](ht
 
 We also need our token to be in the header. From trial and error when I first used Hyper in the library I realized that GitHub is expecting input of the form `token {Your_Token_Here}` for their `Authorization` header. It's a bit weird when I first tried to figure it out. Originally I thought I was supposed to use Hyper's `Bearer` struct since it had a token value inside of it but that was not the case apparently.
 
-我们还需要在header头部添加token。 从我第一次在库中使用Hyper时的调试和报错中我意识到GitHub需要输入的`Authorization`头信息是 `token {Your_Token_Here} `的格式。 当我第一次尝试弄明白的时候，这有点奇怪。 最初我以为我应该使用Hyper的 `Bearer` 结构，因为它里面有一个令牌值，但显然不是这样。
+我们还需要在header头部添加token。 从我第一次在库中使用Hyper时的调试和报错中我意识到GitHub需要输入的`Authorization` 头信息是 `token {Your_Token_Here} `的格式。 当我第一次尝试弄明白的时候，这有点奇怪。 最初我以为我应该使用Hyper的 `Bearer` 结构，因为它里面有一个令牌值，但显然不是这样。
 
 Let's change the headers of our Request now:
 
