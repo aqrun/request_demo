@@ -1,7 +1,8 @@
 
 # Using an Async Hyper Client 使用异步 Hyper Client
 
-> Published [March](https://mgattozzi.com/hyper-client) 9th, 2017 [Github 中文翻译链接](https://github.com/aqrun/request_demo/blob/master/readme.md)（翻译问题欢迎指正)
+> Published March 9th, 2017 by [Michael Gattozzi](https://mgattozzi.com/hyper-client) 
+> [Github 中文翻译链接 https://github.com/aqrun/request_demo/blob/master/readme.md](https://github.com/aqrun/request_demo/blob/master/readme.md)（翻译的不好，任何翻译问题欢迎指正)
 
 Lately I've been revamping my [GitHub API Library](https://github.com/mgattozzi/github-rs) to be both more ergonomic and to use the upcoming 0.11 release of [Hyper](https://github.com/hyperium/hyper) which is asynchronous using [Futures](https://github.com/alexcrichton/futures-rs) and [Tokio](https://tokio.rs/) under the hood. Mainly this has been due to my experiences using my library in my GitHub bot [Thearesia](https://github.com/mgattozzi/thearesia). I figured if I'm already going to be redoing how my library works might as well upgrade to the new version of Hyper as well and provide some explanations to those wishing to upgrade their own libraries. I'll be using Hyper at [this commit](https://github.com/hyperium/hyper/tree/e871411627cab5caf00d8ee65328da9ff05fc53d) for today's example. The docs are good enough for now if you want to dig into it, but you might need to fish around for what you need. Good news is this seems to be the [last issue open](https://github.com/hyperium/hyper/issues/805) before release!
 
