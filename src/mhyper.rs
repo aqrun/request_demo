@@ -10,7 +10,7 @@ pub fn run(){
     let mut core = Core::new().unwrap();
     let client = Client::new(&core.handle());
 
-    let uri = "http://api.displayten.com.cn/v3/geo/info".parse().unwrap();
+    let uri = "http://localhost:99/v3/geo/info".parse().unwrap();
     let work = client.get(uri).and_then(|res| {
         println!("Response: {}", res.status());
 
