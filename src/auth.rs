@@ -42,9 +42,11 @@ pub fn get_access_token() -> String {
     let mut core = Core::new().unwrap();
     let client = Client::new(&core.handle());
 
+    // 请求链接
     let url = format!("{}/v3/auth/token-request", get_env_url()).parse().unwrap();
-    let mut request = Request::new(Post, url);
 
+    let mut request = Request::new(Post, url);
+    //需要的参数
     let username = env::var("USERNAME").expect("USERNAME not exist");
     let password = env::var("PASSWORD").expect("PASSWORD not exist");
 
@@ -53,9 +55,12 @@ pub fn get_access_token() -> String {
             "password": password
         });
     let body = json.to_string();
-
+    
+    // 设置内 content-type application/json
     request.headers_mut().set(ContentType::json());
+    // 设置 content-length
     request.headers_mut().set(ContentLength(body.len() as u64));
+    // post 内容
     request.set_body(body);
 
     let work = client.request(request).and_then(|res| {
@@ -70,10 +75,12 @@ pub fn get_access_token() -> String {
 
     let data = core.run(work).unwrap();
 
+    // 转为结果结构体
     let result_bean: ResultBean<AccessTokenBean> = serde_json::from_str(&data).unwrap();
 
 //    println!("{:?}", result_bean);
 //    println!("{}", result_bean.result.access_token);
+    //返回 token
     result_bean.result.access_token
 }
 
