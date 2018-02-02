@@ -18,11 +18,11 @@
 
 ## TODOS
 
-[x] fetch base url
-[x] fetch access token
-[] user register
-[] user login
-[] reset password
-[] fetch device version
+- [x] fetch base url
+- [x] fetch access token
+- [ ] user register
+- [ ] user login
+- [ ] reset password
+- [ ] fetch device version
 
 
