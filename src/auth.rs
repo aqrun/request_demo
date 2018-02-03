@@ -79,7 +79,7 @@ pub fn get_access_token() -> String {
     let result_bean: ResultBean<AccessTokenBean> = serde_json::from_str(&data).unwrap();
 
 //    println!("{:?}", result_bean);
-//    println!("{}", result_bean.result.access_token);
+    println!("{}", result_bean.result.access_token);
     //返回 token
     result_bean.result.access_token
 }

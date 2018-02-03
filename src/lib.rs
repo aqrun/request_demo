@@ -15,7 +15,7 @@ use std::env;
 mod beans;
 pub mod auth;
 
-pub use beans::{ResultBean, AccessTokenBean};
+pub use self::beans::{ResultBean, AccessTokenBean};
 
 //get env base url
 pub fn get_env_url() -> String {
