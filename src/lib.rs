@@ -9,6 +9,8 @@ extern crate hyper;
 extern crate futures;
 extern crate tokio_core;
 extern crate dotenv;
+#[macro_use]
+extern crate lazy_static;
 
 use std::env;
 
