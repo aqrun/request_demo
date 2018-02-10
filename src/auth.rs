@@ -4,15 +4,15 @@ use hyper::header::{ContentLength, ContentType};
 use serde_json::{self, Value};
 use futures::{future, Future, Stream};
 use std::env;
-use super::{get_env_url, ResultBean, AccessTokenBean};
+use super::{ResultBean, AccessTokenBean};
 
 // base url
-pub fn get_base_url() -> String {
+pub fn get_base_url(base_url: &String) -> String {
 
     let mut core = Core::new().unwrap();
     let client = Client::new(&core.handle());
 
-    let uri = format!("{}/v3/geo/info", get_env_url()).parse().unwrap();
+    let uri = format!("{}/v3/geo/info", base_url).parse().unwrap();
     let request = Request::new(Post, uri);
 
     let work = client.request(request).and_then(|res| {
@@ -38,12 +38,12 @@ pub fn get_base_url() -> String {
 }
 
 // get access token
-pub fn get_access_token() -> String {
+pub fn fetch_access_token(base_url: &str) -> String {
     let mut core = Core::new().unwrap();
     let client = Client::new(&core.handle());
 
     // 请求链接
-    let url = format!("{}/v3/auth/token-request", get_env_url()).parse().unwrap();
+    let url = format!("{}/v3/auth/token-request", base_url).parse().unwrap();
 
     let mut request = Request::new(Post, url);
     //需要的参数
@@ -79,7 +79,7 @@ pub fn get_access_token() -> String {
     let result_bean: ResultBean<AccessTokenBean> = serde_json::from_str(&data).unwrap();
 
 //    println!("{:?}", result_bean);
-    println!("{}", result_bean.result.access_token);
+   // println!("{}", result_bean.result.access_token);
     //返回 token
     result_bean.result.access_token
 }

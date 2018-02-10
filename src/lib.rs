@@ -15,9 +15,12 @@ extern crate lazy_static;
 use std::env;
 
 mod beans;
-pub mod auth;
+mod auth;
+mod app;
 
 pub use self::beans::{ResultBean, AccessTokenBean};
+pub use self::app::App;
+pub use self::auth::fetch_access_token;
 
 //get env base url
 pub fn get_env_url() -> String {
